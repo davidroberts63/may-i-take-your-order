@@ -13,30 +13,30 @@ namespace Exam
     /// </summary>
     public class Item
     {
-        private int key;
-        private string name;
-        private float price;
-
+        public int Key { get; private set; }
+        public string Name { get; private set; }
+        public float Price { get; private set; }
+        
         public Item(int key, string name, float price)
         {
-            this.key = key;
-            this.name = name;
-            this.price = price;
+            this.Key = key;
+            this.Name = name;
+            this.Price = price;
         }
 
         public int GetKey()
         {
-            return key;
+            return Key;
         }
 
         public string GetName()
         {
-            return name;
+            return Name;
         }
 
         public float GetPrice()
         {
-            return price;
+            return Price;
         }
     }
 }

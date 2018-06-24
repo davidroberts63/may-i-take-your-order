@@ -11,11 +11,11 @@ namespace Exam
     /// </summary>
     public class Order
     {
-        private OrderItem[] orderItems;
-
+        public ICollection<Item> Items { get; private set; }
+        
         public Order(OrderItem[] orderItems)
         {
-            this.orderItems = orderItems;
+            this.Items = orderItems;
         }
 
         // Returns the total order cost after the tax has been applied
@@ -32,7 +32,7 @@ namespace Exam
          */
         public ICollection<Item> GetItems()
         {
-            return null;// implement this method
+            return Items;// implement this method
         }
     }
 }

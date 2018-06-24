@@ -2,8 +2,8 @@ namespace Exam
 {
     public interface IOrderItem
     {
-        public Item Item { get; }
-        public int Quantity { get; }
+        Item Item { get; }
+        int Quantity { get; }
     }
 
     public class ServiceOrderItem : IOrderItem

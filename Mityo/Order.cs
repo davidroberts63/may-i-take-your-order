@@ -1,4 +1,6 @@
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Exam
 {
@@ -11,11 +13,27 @@ namespace Exam
     /// </summary>
     public class Order
     {
-        public ICollection<Item> Items { get; private set; }
-        
-        public Order(OrderItem[] orderItems)
+        public ICollection<IOrderItem> OrderItems { get; private set; }
+        public ICollection<Item> Items
         {
-            this.Items = orderItems;
+            get
+            {
+                var stuff = OrderItems.SelectMany((IOrderItem oi) => {
+                    var result = new Item[oi.Quantity];
+                    for (var i = 0; i < oi.Quantity; i++)
+                    {
+                        result[i] = oi.Item;
+                    }
+                    return result;
+                }).ToList();
+
+                return new Collection<Item>(stuff);
+            }
+        }
+
+        public Order(IEnumerable<IOrderItem> orderItems)
+        {
+            this.OrderItems = new ReadOnlyCollection<IOrderItem>(orderItems.ToList());
         }
 
         // Returns the total order cost after the tax has been applied

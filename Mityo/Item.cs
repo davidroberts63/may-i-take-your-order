@@ -18,12 +18,25 @@ namespace Exam
         public int Key { get; private set; }
         public string Name { get; private set; }
         public float Price { get; private set; }
-        
+
         public Item(int key, string name, float price)
         {
             this.Key = key;
             this.Name = name;
             this.Price = price;
+            
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hash = (int) 12073;
+                hash = (hash * 379) ^ Key.GetHashCode();
+                hash = (hash * 379) ^ Name.GetHashCode();
+                hash = (hash * 379) ^ Price.GetHashCode();
+                return hash;
+            }
         }
 
         public int GetKey()

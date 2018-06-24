@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace Exam
 {
@@ -11,6 +12,7 @@ namespace Exam
     /// change it in any way.
     ///
     /// </summary>
+    [DataContract]
     public class Item
     {
         public int Key { get; private set; }

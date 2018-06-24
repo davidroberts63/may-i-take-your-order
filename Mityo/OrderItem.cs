@@ -1,3 +1,5 @@
+using System.Runtime.Serialization;
+
 namespace Exam
 {
     public interface IOrderItem
@@ -6,6 +8,7 @@ namespace Exam
         int Quantity { get; }
     }
 
+    [DataContract]
     public class ServiceOrderItem : IOrderItem
     {
         public Item Item { get; private set; }
@@ -18,6 +21,7 @@ namespace Exam
         }
     }
 
+    [DataContract]
     public class MaterialOrderItem : IOrderItem
     {
         public Item Item { get; private set; }

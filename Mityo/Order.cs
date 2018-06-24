@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace Exam
 {
@@ -11,8 +12,10 @@ namespace Exam
     /// is sent to other systems for processing that should not be able
     /// to change it in any way.
     /// </summary>
+    [DataContract]
     public class Order
     {
+        [DataMember]
         public ICollection<IOrderItem> OrderItems { get; private set; }
         public ICollection<Item> Items
         {

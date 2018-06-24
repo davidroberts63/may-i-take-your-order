@@ -13,8 +13,8 @@ namespace Tests
         {
             var originalOrderItems = new List<Exam.IOrderItem>()
             {
-                new Exam.MaterialOrderItem(new Exam.Item(1,"A",1F), 1),
-                new Exam.MaterialOrderItem(new Exam.Item(2,"B",2F), 2)
+                new Exam.MaterialOrderItem(new Exam.Item(1,"A",1), 1),
+                new Exam.MaterialOrderItem(new Exam.Item(2,"B",2), 2)
             };
             var order = new Exam.Order(originalOrderItems);
 
@@ -28,8 +28,8 @@ namespace Tests
         {
             var originalOrderItems = new List<Exam.IOrderItem>()
             {
-                new Exam.MaterialOrderItem(new Exam.Item(1,"A",1F), 1),
-                new Exam.MaterialOrderItem(new Exam.Item(2,"B",2F), 1)
+                new Exam.MaterialOrderItem(new Exam.Item(1,"A",1), 1),
+                new Exam.MaterialOrderItem(new Exam.Item(2,"B",2), 1)
             };
             var order = new Exam.Order(originalOrderItems);
 
@@ -47,8 +47,8 @@ namespace Tests
         {
             var originalOrderItems = new List<Exam.IOrderItem>()
             {
-                new Exam.MaterialOrderItem(new Exam.Item(1,"A",1F), 2),
-                new Exam.MaterialOrderItem(new Exam.Item(2,"B",2F), 1)
+                new Exam.MaterialOrderItem(new Exam.Item(1,"A",1), 2),
+                new Exam.MaterialOrderItem(new Exam.Item(2,"B",2), 1)
             };
             var order = new Exam.Order(originalOrderItems);
 
@@ -64,6 +64,19 @@ namespace Tests
             Assert.Equal(order.OrderItems.Count, deserializedOrder.OrderItems.Count);
             Assert.Equal("A", order.OrderItems.First().Item.Name);
             Assert.Equal(2, order.OrderItems.First().Quantity);
+        }
+
+        [Fact]
+        public void OrderTotalOfServiceOrderItemsIsAccurateToPenny()
+        {
+            var originalOrderItems = new List<Exam.IOrderItem>()
+            {
+                new Exam.ServiceOrderItem(new Exam.Item(1,"A",1.21m), 2),
+                new Exam.ServiceOrderItem(new Exam.Item(2,"B",2.08m), 1)
+            };
+            var order = new Exam.Order(originalOrderItems);
+
+            Assert.Equal(4.50m, order.GetOrderTotal(0m));
         }
     }
 }

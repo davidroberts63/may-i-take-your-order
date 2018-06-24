@@ -17,9 +17,9 @@ namespace Exam
     {
         public int Key { get; private set; }
         public string Name { get; private set; }
-        public float Price { get; private set; }
+        public decimal Price { get; private set; }
 
-        public Item(int key, string name, float price)
+        public Item(int key, string name, decimal price)
         {
             this.Key = key;
             this.Name = name;
@@ -49,7 +49,7 @@ namespace Exam
             return Name;
         }
 
-        public float GetPrice()
+        public decimal GetPrice()
         {
             return Price;
         }

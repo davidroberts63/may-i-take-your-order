@@ -40,9 +40,9 @@ namespace Exam
         }
 
         // Returns the total order cost after the tax has been applied
-        public float GetOrderTotal(float taxRate)
+        public decimal GetOrderTotal(decimal taxRate)
         {
-            return 0; // implement this method
+            return OrderItems.Sum(oi => oi.Item.Price * oi.Quantity);
         }
 
         /**

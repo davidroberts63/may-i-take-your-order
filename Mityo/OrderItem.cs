@@ -6,6 +6,7 @@ namespace Exam
     {
         Item Item { get; }
         int Quantity { get; }
+        decimal TaxablePrice { get; }
     }
 
     [DataContract]
@@ -13,11 +14,13 @@ namespace Exam
     {
         public Item Item { get; private set; }
         public int Quantity { get; private set; }
+        public decimal TaxablePrice { get; private set; }
 
         public ServiceOrderItem(Item item, int quantity)
         {
             this.Item = item;
             this.Quantity = quantity;
+            this.TaxablePrice = 0m;
         }
     }
 
@@ -26,11 +29,13 @@ namespace Exam
     {
         public Item Item { get; private set; }
         public int Quantity { get; private set; }
+        public decimal TaxablePrice { get; private set; }
 
         public MaterialOrderItem(Item item, int quantity)
         {
             this.Item = item;
             this.Quantity = quantity;
+            this.TaxablePrice = item.Price;
         }
     }
 

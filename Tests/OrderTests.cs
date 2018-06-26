@@ -67,7 +67,7 @@ namespace Tests
         }
 
         [Fact]
-        public void OrderTotalOfServiceOrderItemsIsAccurateToPenny()
+        public void OrderTotalOfServiceOrderItemsDoesNotIncludeTax()
         {
             var originalOrderItems = new List<Exam.IOrderItem>()
             {
@@ -78,5 +78,21 @@ namespace Tests
 
             Assert.Equal(4.50m, order.GetOrderTotal(0m));
         }
+
+        [Theory]
+        [InlineData(0.10, 4.95)]
+        [InlineData(0.0876, 4.89)]
+        public void OrderTotalOfMaterialOrderItemsIncludesTax(decimal rate, decimal expected)
+        {
+            var originalOrderItems = new List<Exam.IOrderItem>()
+            {
+                new Exam.MaterialOrderItem(new Exam.Item(1,"A",1.21m), 2),
+                new Exam.MaterialOrderItem(new Exam.Item(2,"B",2.08m), 1)
+            };
+            var order = new Exam.Order(originalOrderItems);
+
+            Assert.Equal(expected, order.GetOrderTotal(rate));
+        }
+        
     }
 }

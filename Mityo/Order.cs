@@ -42,7 +42,9 @@ namespace Exam
         // Returns the total order cost after the tax has been applied
         public decimal GetOrderTotal(decimal taxRate)
         {
-            return OrderItems.Sum(oi => oi.Item.Price * oi.Quantity);
+            decimal subtotal = OrderItems.Sum(oi => oi.Item.Price * oi.Quantity);
+            decimal taxable = OrderItems.Sum(oi => oi.TaxablePrice * oi.Quantity);
+            return System.Math.Round(subtotal + (taxable * taxRate), 2);
         }
 
         /**

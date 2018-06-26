@@ -30,7 +30,7 @@ namespace Exam
                     return result;
                 }).ToList();
 
-                return new Collection<Item>(stuff);
+                return new Collection<Item>(stuff.OrderBy(i => i.Name).ToList());
             }
         }
 
@@ -55,7 +55,7 @@ namespace Exam
          */
         public ICollection<Item> GetItems()
         {
-            return Items;// implement this method
+            return Items;
         }
     }
 }

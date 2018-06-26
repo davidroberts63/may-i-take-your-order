@@ -31,3 +31,7 @@ It's a bit late, so I'm kinda tired, shouldn't write any code so I'm gonna write
 **Matt>** Hey, can I add a milk shake to that order?
 
 **BRAND>** Sorry sir, we [can't change](https://github.com/davidroberts63/may-i-take-your-order/blob/2de2b08ac6397e247a2588595f2c311253730ff7/Mityo/Order.cs#L48) the order once it's been made. Corporate [tests for that](https://github.com/davidroberts63/may-i-take-your-order/blob/2de2b08ac6397e247a2588595f2c311253730ff7/Tests/OrderTests.cs#L27). But I'd be happy to make a new order for you.
+
+**Matt>** Wait, you test these?
+
+**BRAND>** Yes, everytime we complete work, [we test](https://ci.appveyor.com/project/davidroberts63/may-i-take-your-order/build/tests).

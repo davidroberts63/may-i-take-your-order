@@ -9,6 +9,10 @@ namespace Exam
         decimal TaxablePrice { get; }
     }
 
+    /// <summary>
+    /// Represents an item to be treated as a service on an order.
+    /// </summary>
+    /// <remarks>No taxable price on this.</remarks>
     [DataContract]
     public class ServiceOrderItem : IOrderItem
     {
@@ -24,6 +28,10 @@ namespace Exam
         }
     }
 
+    /// <summary>
+    /// Represents an item to be treated as a material item on an order.
+    /// </summary>
+    /// <remarks>The taxable price is same as the item's price.</remarks>
     [DataContract]
     public class MaterialOrderItem : IOrderItem
     {

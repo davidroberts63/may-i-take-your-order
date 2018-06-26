@@ -15,8 +15,17 @@ namespace Exam
     [DataContract]
     public class Order
     {
+        /// <summary>
+        /// What's in the order.
+        /// </summary>
+        /// <remarks>The item ordered as well as quantiy of each item</remarks>
         [DataMember]
         public ICollection<IOrderItem> OrderItems { get; private set; }
+        
+        /// <summary>
+        /// All individual items in the order.
+        /// </summary>
+        /// <remarks>Note that this will have duplicate items if the quantity ordered is more than one.</remarks>
         public ICollection<Item> Items
         {
             get
@@ -39,7 +48,11 @@ namespace Exam
             this.OrderItems = new ReadOnlyCollection<IOrderItem>(orderItems.ToList());
         }
 
-        // Returns the total order cost after the tax has been applied
+        /// <summary>
+        /// Calculates the total order cost after tax has been applied.
+        /// </summary>
+        /// <param name="taxRate">Decimal tax rate to apply to subtotal</param>
+        /// <returns>Order total cost</returns>
         public decimal GetOrderTotal(decimal taxRate)
         {
             decimal subtotal = OrderItems.Sum(oi => oi.Item.Price * oi.Quantity);

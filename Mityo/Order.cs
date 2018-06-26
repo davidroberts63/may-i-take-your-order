@@ -46,16 +46,5 @@ namespace Exam
             decimal taxable = OrderItems.Sum(oi => oi.TaxablePrice * oi.Quantity);
             return System.Math.Round(subtotal + (taxable * taxRate), 2);
         }
-
-        /**
-         * Returns a Collection of all items sorted by item name
-         * (case-insensitive).
-         *
-         * @return ICollection<Item>
-         */
-        public ICollection<Item> GetItems()
-        {
-            return Items;
-        }
     }
 }

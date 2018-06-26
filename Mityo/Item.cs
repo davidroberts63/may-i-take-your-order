@@ -38,20 +38,5 @@ namespace Exam
                 return hash;
             }
         }
-
-        public int GetKey()
-        {
-            return Key;
-        }
-
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public decimal GetPrice()
-        {
-            return Price;
-        }
     }
 }
